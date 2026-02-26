@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-#CSV_to_List[Object]_Converter.py
+#data_processing.py
     # converts the csv file of Auto Trends into a list of objects
     # where each object in said list represents 1 row in the csv
 
