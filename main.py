@@ -8,6 +8,6 @@ print(data)
 print(len(data))
 print(type(data),type(data[0]))
 print(data[350])
-x = 25
+x = 276
 print("For {} in year {}, the average MPG on the HWY was {}"
       .format(data[x].vehicle_type, data[x].model_year, data[x].mpg_hwy))
