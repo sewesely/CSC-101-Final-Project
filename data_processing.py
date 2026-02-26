@@ -67,14 +67,10 @@ import csv
 #return a list of objects, each object represents a row in the csv
 def load_auto_trends(filepath: str) -> list[AutoTrendEntry]:
     entries = []
-    with open(filepath, newline="", encoding="utf-8") as f: #being honest not 100% sure what this line does
+    with open(filepath) as f: #being honest not 100% sure what this line does
         reader = csv.DictReader(f)  # converts the csv into a list of dictionaries
         for row in reader:          # each row is a dict
             entries.append(convert_auto_entry(row)) # add the class of the row (function: dict -> class)
     return entries  # all the data, list[object]
 
-# Usage, this is a list of objects that represent the CSV. When needing to access the data
-    # we could just import this variable. Reminder: each object represent 1 row in the csv
-    # len(data) = 400
-    # roughly 8 rows per year because of the different car/vehicle types
 data = load_auto_trends("AutomotiveTrendsData1975-2024(Prelim).csv")
