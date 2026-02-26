@@ -31,7 +31,7 @@ class AutoTrendEntry:
     horsepower: Optional[float]         # None if "-" (missing in some cells)
     footprint_sqft: Optional[float]     # None if "-" (missing in some cells)
 
-#----------------------------------------------------------------------------------#
+
 #Cleaning the csv for the function
     #some of the cells in the csv don't have data and are noted as "-"
     #this function helps the convert_auto_enty() ignore those cells
@@ -59,8 +59,6 @@ def convert_auto_entry(row: dict) -> AutoTrendEntry:
         horsepower       = parse_numeric(row["Horsepower (HP)"]),
         footprint_sqft   = parse_numeric(row["Footprint (sq. ft.)"])
     )
-
-#----------------------------------------------------------------------------------#
 
 import csv
 #splits the csv into rows and passes each row to convert_auto_entry() and convert the row to a class
