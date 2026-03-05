@@ -1,5 +1,6 @@
 #Test
 from data_processing import load_auto_trends, AutoTrendEntry
+from functions import *
 
 data = load_auto_trends("AutomotiveTrendsData1975-2024(Prelim).csv")
 
@@ -11,3 +12,4 @@ print(data[350])
 x = 276
 print("For {} in year {}, the average MPG on the HWY was {}"
       .format(data[x].vehicle_type, data[x].model_year, data[x].mpg_hwy))
+

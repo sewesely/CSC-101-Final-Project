@@ -10,7 +10,7 @@ from typing import Optional
     # https://docs.python.org/3/library/dataclasses.html
     # https://realpython.com/python-data-classes/
 
-#----------------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------------------------------------#
 #This is the definition of the Dataclass
     # each element in "data" should be an object of this
     # use the class variables to find the data within the rows
