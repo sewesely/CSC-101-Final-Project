@@ -53,9 +53,11 @@ def AutoFilter(data:list, field:str, filter:str)->list[data_processing.AutoTrend
     # check if the element has the attributes "field" and is greater or equal to the float
     # if true then append to a new list
     # return the new list
-def GreaterThan(data:list, field:str, filter:str)->list[data_processing.AutoTrendEntry]:
+def GreaterEqualThan(data:list, field:str, min:str)->list[data_processing.AutoTrendEntry]:
     filtered_data = []
     for Auto in data:
-        if getattr(Auto,field) >= float:
+        if getattr(Auto,field) >= min:
             filtered_data.append(Auto)
     return filtered_data
+
+print(GreaterEqualThan(data, "mpg", 40.0))
