@@ -1,5 +1,7 @@
 import data_processing
 
+data = data_processing.load_auto_trends("AutomotiveTrendsData1975-2024(Prelim).csv")
+
 
 #Purpose: Takes the data list and a year returns the average MPG is for that year.
 #Input: list[AutoTrendEntry], str
@@ -18,3 +20,44 @@ def avg_mpg_by_year(data:list[data_processing.AutoTrendEntry], year):
             total_mpg += vehicle.mpg
             vehicle_counter += 1
     return total_mpg/vehicle_counter
+
+
+#AutoFilter() - Sebastian Wesley
+#Purpose: Using a provided "field" & "filter", returns a list of AutoTrendEntry classes that match
+#Input: (list, str, str)
+#Output: list
+#Ex.: An input of (list[data_processing.AutoTrendEntry], "model_year", "1975") would returna list of AutoTrendEntry
+    #that are only of the 1975
+#How I'd complete as a computer?
+    # I would iterate through each element in the list
+    # check if the element has the attributes "field" and is equal to "filter"
+    # if true then append to a new list
+    # return the new list
+def AutoFilter(data:list, field:str, filter:str)->list[data_processing.AutoTrendEntry]:
+    filtered_data = []
+    for Auto in data:
+        if getattr(Auto,field) == filter:
+            filtered_data.append(Auto)
+    return filtered_data
+
+
+#GreaterEqualThan() - Sebastian Wesley
+#Purpose: Using a provided list, "field", and float, returns a list of AutoTrendEntry classes are greater or equal to
+    #the float
+#Input: (list, str, float)
+#Output: list
+#Ex.: An input of (list[data_processing.AutoTrendEntry], "mpg", 10.0) would return a list of AutoTrendEntry
+    #that have a mpg greater than 10
+#How I'd complete as a computer?
+    # I would iterate through each element in the list
+    # check if the element has the attributes "field" and is greater or equal to the float
+    # if true then append to a new list
+    # return the new list
+def GreaterEqualThan(data:list, field:str, min:str)->list[data_processing.AutoTrendEntry]:
+    filtered_data = []
+    for Auto in data:
+        if getattr(Auto,field) >= min:
+            filtered_data.append(Auto)
+    return filtered_data
+
+print(GreaterEqualThan(data, "mpg", 40.0))
