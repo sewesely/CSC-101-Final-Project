@@ -41,20 +41,21 @@ def AutoFilter(data:list, field:str, filter:str)->list[data_processing.AutoTrend
     return filtered_data
 
 
-#GreaterThan() - Sebastian Wesley
-#Purpose: Using a provided list, "field", and float, returns a list of AutoTrendEntry classes that match
-#Input: (list, str, str)
+#GreaterEqualThan() - Sebastian Wesley
+#Purpose: Using a provided list, "field", and float, returns a list of AutoTrendEntry classes are greater or equal to
+    #the float
+#Input: (list, str, float)
 #Output: list
-#Ex.: An input of (list[data_processing.AutoTrendEntry], "model_year", "1975") would returna list of AutoTrendEntry
-    #that are only of the 1975
+#Ex.: An input of (list[data_processing.AutoTrendEntry], "mpg", 10.0) would return a list of AutoTrendEntry
+    #that have a mpg greater than 10
 #How I'd complete as a computer?
     # I would iterate through each element in the list
-    # check if the element has the attributes "field" and is equal to "filter"
+    # check if the element has the attributes "field" and is greater or equal to the float
     # if true then append to a new list
     # return the new list
-def AutoFilter(data:list, field:str, filter:str)->list[data_processing.AutoTrendEntry]:
+def GreaterThan(data:list, field:str, filter:str)->list[data_processing.AutoTrendEntry]:
     filtered_data = []
     for Auto in data:
-        if getattr(Auto,field) == filter:
+        if getattr(Auto,field) >= float:
             filtered_data.append(Auto)
     return filtered_data
