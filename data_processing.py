@@ -71,4 +71,9 @@ def load_auto_trends(filepath: str) -> list[AutoTrendEntry]:
             entries.append(convert_auto_entry(row)) # add the class of the row (function: dict -> class)
     return entries  # all the data, list[object]
 
-data = load_auto_trends("AutomotiveTrendsData1975-2024(Prelim).csv")
+def get_data():
+    data = []
+    for entry in load_auto_trends("AutomotiveTrendsData1975-2024(Prelim).csv"):
+        if entry.vehicle_type != "All" and entry.vehicle_type != "All Truck" and entry.vehicle_type != "All Car":
+            data.append(entry)
+    return data
