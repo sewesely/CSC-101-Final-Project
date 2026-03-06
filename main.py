@@ -27,7 +27,7 @@ def user_input():
         if avg_type_mpg < user_mpg:
             print("Your vehicle is {}% more efficient than average for {}!".format(percent_diff, user_year))
         else:
-            print("Your vehicle is {}% less efficient that average for {}".format(percent_diff, user_year))
+            print("Your vehicle is {}% less efficient than average for {}".format(abs(percent_diff), user_year))
             print("Maybe buy a newer car to be more efficient on the roads...")
 
 
