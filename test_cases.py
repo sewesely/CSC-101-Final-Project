@@ -1,8 +1,9 @@
 import unittest
-from data_processing import load_auto_trends, AutoTrendEntry
+from data_processing import load_auto_trends, AutoTrendEntry, get_data
 from functions import *
 data = load_auto_trends("AutomotiveTrendsData1975-2024(Prelim).csv")
-
+reduced_data = load_auto_trends("AutomotiveTrendsData1975-2024(Prelim).csv")[392:]  # Entries just for the year 2024
+data_no_all = get_data()
 
 class TestCases(unittest.TestCase):
 
@@ -26,4 +27,24 @@ class TestCases(unittest.TestCase):
     def test_GreaterEqualThan_2(self):
         expected = [AutoTrendEntry(model_year='2023', regulatory_class='Car', vehicle_type='Car SUV', production_share=0.124776, mpg=40.51679, mpg_city=37.10749, mpg_hwy=43.53415, co2=189.9591, co2_city=211.83547, co2_hwy=173.45588, weight_lbs=4074.637, horsepower=269.0886, footprint_sqft=48.29626), AutoTrendEntry(model_year='Prelim. 2024', regulatory_class='Car', vehicle_type='Car SUV', production_share=None, mpg=40.33566, mpg_city=37.42855, mpg_hwy=42.84618, co2=190.41891, co2_city=209.46615, co2_hwy=176.04994, weight_lbs=3986.202, horsepower=252.4114, footprint_sqft=47.90307)]
         actual = GreaterEqualThan(data, "mpg", 40.0)
+        self.assertEqual(expected, actual)
+
+    def test_avg_mpg_by_year_1(self):
+        expected = 29.58
+        actual = round(avg_mpg_by_year(data_no_all, "Prelim. 2024"), 2)
+        self.assertEqual(expected, actual)
+
+    def test_avg_mpg_by_year_2(self):
+        expected = 21.17
+        actual = round(avg_mpg_by_year(data_no_all, "2010"),2)
+        self.assertEqual(expected, actual)
+
+    def test_avg_co2_by_year_1(self):
+        expected = 313
+        actual = round(avg_co2_by_year(data_no_all, "2023"))
+        self.assertEqual(expected, actual)
+
+    def test_avg_co2_by_year_2(self):
+        expected = 580
+        actual = round(avg_co2_by_year(data_no_all, "1980"))
         self.assertEqual(expected, actual)
