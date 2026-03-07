@@ -114,4 +114,49 @@ def percent_diff(year1:str, year2:str, field:str)->float:
     percent_diff = (year2_field - year1_field)/year1_field * 100
     return percent_diff
 
-display(GreaterEqualThan(data, "mpg", 40.0))
+
+#most_produced() - Will Bakey
+#Purpose: Takes a year and finds the most produced vehicle that year
+#Input: string
+#Output: string
+#Ex: most_produced("2023") would return "Truck SUV"
+#How would I do this as a computer?
+#-Filter the data list to just those of the given year
+#-Create greatest_production_share variable equal to 0
+#-For each element in the filtered list:
+#   -If its production share is greater than greatest_production_share:
+#       -Set greatest_production_share to its production share
+#       -set a new variable vehicle equal to the vehicle type
+#-Return vehicle
+def most_produced(year:str)->str:
+    filtered_list = AutoFilter(data, "model_year", year)
+    greatest_production_share = 0
+    vehicle = ''
+    for entry in filtered_list:
+        if entry.production_share > greatest_production_share:
+            greatest_production_share = entry.production_share
+            vehicle = entry.vehicle_type
+    return vehicle
+
+#most_efficient() - Will Bakey
+#Purpose: Takes a year and finds the most efficient vehicle that year
+#Input: string
+#Output: string
+#Ex: most_efficient("2023") would return "Car SUV"
+#How would I do this as a computer?
+#-Filter the data list to just those of the given year
+#-Create greatest_mpg variable equal to 0
+#-For each element in the filtered list:
+#   -If its mpg is greater than greatest_mpg:
+#       -Set greatest_mpg to its mpg
+#       -set a new variable vehicle equal to the vehicle type
+#-Return vehicle
+def most_efficient(year:str)->str:
+    filtered_list = AutoFilter(data, "model_year", year)
+    greatest_mpg = 0
+    vehicle = ''
+    for entry in filtered_list:
+        if entry.mpg > greatest_mpg:
+            greatest_mpg = entry.mpg
+            vehicle = entry.vehicle_type
+    return vehicle

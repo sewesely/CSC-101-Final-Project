@@ -63,3 +63,23 @@ class TestCases(unittest.TestCase):
     def test_percent_diff_3(self):
         expected = 0
         actual = percent_diff("2020", "2020", "mpg")
+
+    def test_most_produced_1(self):
+        expected = "Truck SUV"
+        actual = most_produced("2023")
+        self.assertEqual(expected, actual)
+
+    def test_most_produced_2(self):
+        expected = "Sedan/Wagon"
+        actual = most_produced("2012")
+        self.assertEqual(expected, actual)
+
+    def test_most_efficient_1(self):
+        expected = "Car SUV"
+        actual = most_efficient("2023")
+        self.assertEqual(expected, actual)
+
+    def test_most_efficient_2(self):
+        expected = "Sedan/Wagon"
+        actual = most_efficient("2012")
+        self.assertEqual(expected, actual)

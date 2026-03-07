@@ -21,9 +21,9 @@ def main_menu():
         print("3. See highly efficient vehicles (mpg >= X)")
         print("4. See the stats of vehicles in a given year?")
         print("5. See how vehicles have improved over time?")
-        print("6. Quit")
-
-        choice = input("Enter a choice (1-6): ")
+        print("6. Compare the most produced car to the most efficient car for a given year?")
+        print("7. Quit")
+        choice = input("Enter a choice (1-7): ")
 
         if choice == "1":
             compare_user_car()
@@ -36,6 +36,8 @@ def main_menu():
         elif choice == "5":
             show_improvement()
         elif choice == "6":
+            compare_most_produced()
+        elif choice == "7":
             print("Goodbye!")
             break
         else:
@@ -163,7 +165,8 @@ def show_vehicles_for_year():
 #How would I do this as a computer?
 #-Take an input for a past year, store it in a variable
 #-Take another input for a more recent year, store in another variable
-#-
+#-Take another input for the field
+#-Input those into percent_diff() and display the results
 def show_improvement():
     year1 = input("\nEnter a past year (1975-Prelim. 2024): ")
     year2 = input("\nEnter a more recent year (up to Prelim. 2024): ")
@@ -178,8 +181,22 @@ def show_improvement():
         if percent_difference < 0:
             print("CO2 emissions decreased by {}% from {} to {}!".format(abs(percent_difference), year1, year2))
         else:
-            print("CO2 increased by {}% from {} to {}".format(percent_difference, year1, year2))
+            print("CO2 emissions increased by {}% from {} to {}".format(percent_difference, year1, year2))
 
+#compare_most_produced() - Will Bakey
+#Purpose: Compares the most produced car for a given year to the most efficient car
+#Input: None
+#Output: None
+#How would I do this as a computer?
+#-
+def compare_most_produced():
+    year = input("What year would you like to see? (1975-Prelim. 2024): ")
+    most_produced_vehicle = AutoFilter(AutoFilter(data, 'model_year', year),'vehicle_type', most_produced(year))
+    most_efficient_vehicle = AutoFilter(AutoFilter(data,'model_year', year), 'vehicle_type', most_efficient(year))
+    print("\nThe most produced vehicle of {}:".format(year))
+    display(most_produced_vehicle)
+    print("\nThe most efficient vehicle of {}:".format(year))
+    display(most_efficient_vehicle)
 
 
 if __name__ == '__main__':
