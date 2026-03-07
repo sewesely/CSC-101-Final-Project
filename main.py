@@ -20,9 +20,10 @@ def main_menu():
         print("2. See average CO2 emissions for a year")
         print("3. See highly efficient vehicles (mpg >= X)")
         print("4. See the stats of vehicles in a given year?")
-        print("5. Quit")
+        print("5. See how vehicles have improved over time?")
+        print("6. Quit")
 
-        choice = input("Enter a choice (1-5): ")
+        choice = input("Enter a choice (1-6): ")
 
         if choice == "1":
             compare_user_car()
@@ -33,6 +34,8 @@ def main_menu():
         elif choice == "4":
             show_vehicles_for_year()
         elif choice == "5":
+            show_improvement()
+        elif choice == "6":
             print("Goodbye!")
             break
         else:
@@ -58,7 +61,7 @@ def compare_user_car():
     avg_mpg_all = avg_mpg_by_year(data, user_year)
     avg_type_mpg = avg_mpg_by_year(AutoFilter(data, "vehicle_type", user_type), user_year)
 
-    percent_diff = round((user_mpg - avg_type_mpg) / avg_type_mpg * 100, 1)
+    percent_difference = round((user_mpg - avg_type_mpg) / avg_type_mpg * 100, 1)
 
     print("\n#-------------------------------------------------------#")
     print("Your Car:\n Year: {}\n Type: {}\n MPG: {}\n".format(user_year, user_type, user_mpg))
@@ -66,7 +69,7 @@ def compare_user_car():
     print("Average MPG for all vehicles in {}: {}".format(user_year, round(avg_mpg_all,2)))
 
     if user_mpg >= avg_type_mpg:
-        print("Your vehicle is {}% more efficient than the average {} in {}.".format(round(percent_diff,2), user_type, user_year))
+        print("Your vehicle is {}% more efficient than the average {} in {}.".format(round(percent_difference,2), user_type, user_year))
         print("That's great for reducing fuel use and emissions over time!")
     else:
         print("Your vehicle is {}% less efficient than the average {} in {}.".format(abs(round(percent_diff,2)), user_type, user_year))
@@ -153,6 +156,29 @@ def show_vehicles_for_year():
     print("\nVehicle configurations for {}:".format(year))
     display(year_entries)
 
+#show_improvement() - Will Bakey
+#Purpose: Takes two years and a field of interest and returns the percent change between the 2 years
+#Input: None
+#Output: None
+#How would I do this as a computer?
+#-Take an input for a past year, store it in a variable
+#-Take another input for a more recent year, store in another variable
+#-
+def show_improvement():
+    year1 = input("\nEnter a past year (1975-Prelim. 2024): ")
+    year2 = input("\nEnter a more recent year (up to Prelim. 2024): ")
+    field = input("\nWhat data are you interested in (Enter 'mpg' or 'co2'): ")
+    percent_difference = round(percent_diff(year1, year2, field), 1)
+    if field == "mpg":
+        if percent_difference > 0:
+            print("MPG improved by {}% from {} to {}!".format(percent_difference, year1, year2))
+        else:
+            print("MPG decreased by {}% from {} to {}".format(abs(percent_difference), year1, year2))
+    elif field == "co2":
+        if percent_difference < 0:
+            print("CO2 emissions decreased by {}% from {} to {}!".format(abs(percent_difference), year1, year2))
+        else:
+            print("CO2 increased by {}% from {} to {}".format(percent_difference, year1, year2))
 
 
 

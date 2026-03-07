@@ -38,7 +38,7 @@ def AutoFilter(data:list, field:str, filter:str)->list[data_processing.AutoTrend
     return filtered_data
 
 #avg_mpg_by_year - Will Bakey
-#Purpose: Takes the data list and a year returns the average MPG is for that year.
+#Purpose: Takes the data list and a year and returns the average MPG for all vehicle types for that year.
 #Input: list[AutoTrendEntry], str
 #Output: float
 #Ex: avg_mpg_by_year(data, "2023") would output the average mpg of all cars in the year 2023
@@ -58,7 +58,7 @@ def avg_mpg_by_year(data:list[data_processing.AutoTrendEntry], year:str)->float:
     return total_mpg/vehicle_counter
 
 #avg_co2_by_year - Will Bakey
-#Purpose: Takes the data list and a year as a string and returns the average co2 of all vehicles that year (g/mi)
+#Purpose: Takes the data list and a year as a string and returns the average co2 of all vehicle types that year (g/mi)
 #Input: list[AutoTrendEntry], str
 #Output: float
 #Ex: avg_co2_by_year(data, "2023") would output the average CO2 emissions (in g/mi) of all vehicle types in the year 2023
@@ -95,4 +95,23 @@ def GreaterEqualThan(data:list, field:str, min:str)->list[data_processing.AutoTr
             filtered_data.append(Auto)
     return filtered_data
 
-print(GreaterEqualThan(data, "mpg", 40.0))
+#percent_diff() - Will Bakey
+#Purpose: Takes two years (as strings) and a field and compares the percent difference of that field between the years
+#Input: 3 strings
+#Output: float
+#Ex: percent_diff(2020, 2023, mpg) would display the percent change in mpg from 2020 vehicles to 2023 vehicles
+#How would I do this as a computer?
+#-Store the values from the respective fields two new variables
+def percent_diff(year1:str, year2:str, field:str)->float:
+    if field == "mpg":
+        year1_field = avg_mpg_by_year(data, year1)
+        year2_field = avg_mpg_by_year(data, year2)
+    elif field == "co2":
+        year1_field = avg_co2_by_year(data, year1)
+        year2_field = avg_co2_by_year(data, year2)
+    else:
+        return 0
+    percent_diff = (year2_field - year1_field)/year1_field * 100
+    return percent_diff
+
+display(GreaterEqualThan(data, "mpg", 40.0))

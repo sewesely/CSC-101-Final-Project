@@ -29,6 +29,7 @@ class TestCases(unittest.TestCase):
         actual = GreaterEqualThan(data, "mpg", 40.0)
         self.assertEqual(expected, actual)
 
+#Expected calculations done by manually calculating data from website where we got the data
     def test_avg_mpg_by_year_1(self):
         expected = 29.58
         actual = round(avg_mpg_by_year(data_no_all, "Prelim. 2024"), 2)
@@ -48,3 +49,17 @@ class TestCases(unittest.TestCase):
         expected = 580
         actual = round(avg_co2_by_year(data_no_all, "1980"))
         self.assertEqual(expected, actual)
+
+    def test_percent_diff_1(self):
+        expected = 15.3
+        actual = round(percent_diff("2020", "2023", "mpg"), 1)
+        self.assertEqual(expected, actual)
+
+    def test_percent_diff_2(self):
+        expected = -47.6
+        actual = round(percent_diff("1980", "Prelim. 2024", "co2"), 1)
+        self.assertEqual(expected, actual)
+
+    def test_percent_diff_3(self):
+        expected = 0
+        actual = percent_diff("2020", "2020", "mpg")
