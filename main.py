@@ -74,7 +74,7 @@ def compare_user_car():
         print("Your vehicle is {}% more efficient than the average {} in {}.".format(round(percent_difference,2), user_type, user_year))
         print("That's great for reducing fuel use and emissions over time!")
     else:
-        print("Your vehicle is {}% less efficient than the average {} in {}.".format(abs(round(percent_diff,2)), user_type, user_year))
+        print("Your vehicle is {}% less efficient than the average {} in {}.".format(abs(round(percent_difference,2)), user_type, user_year))
         print("Upgrading or driving less could significantly cut your fuel use and CO2 footprint.")
     print("#-------------------------------------------------------#")
 
@@ -170,18 +170,23 @@ def show_vehicles_for_year():
 def show_improvement():
     year1 = input("\nEnter a past year (1975-Prelim. 2024): ")
     year2 = input("\nEnter a more recent year (up to Prelim. 2024): ")
-    field = input("\nWhat data are you interested in (Enter 'mpg' or 'co2'): ")
-    percent_difference = round(percent_diff(year1, year2, field), 1)
-    if field == "mpg":
-        if percent_difference > 0:
-            print("MPG improved by {}% from {} to {}!".format(percent_difference, year1, year2))
-        else:
-            print("MPG decreased by {}% from {} to {}".format(abs(percent_difference), year1, year2))
-    elif field == "co2":
-        if percent_difference < 0:
-            print("CO2 emissions decreased by {}% from {} to {}!".format(abs(percent_difference), year1, year2))
-        else:
-            print("CO2 emissions increased by {}% from {} to {}".format(percent_difference, year1, year2))
+    mpg_percent_difference = round(percent_diff(year1, year2, "mpg"), 1)
+    co2_percent_difference = round(percent_diff(year1, year2, "co2"),1)
+    if mpg_percent_difference > 0:
+        print("\nMPG improved by {}% from {} to {}!".format(mpg_percent_difference, year1, year2))
+    else:
+        print("\nMPG decreased by {}% from {} to {}".format(abs(mpg_percent_difference), year1, year2))
+    if co2_percent_difference < 0:
+        print("CO2 emissions decreased by {}% from {} to {}!".format(abs(co2_percent_difference), year1, year2))
+    else:
+        print("CO2 emissions increased by {}% from {} to {}".format(co2_percent_difference, year1, year2))
+    if mpg_percent_difference - co2_percent_difference > 30:
+        print("This is great progress!")
+    elif mpg_percent_difference - co2_percent_difference > 10:
+        print("This is good progress!")
+    elif mpg_percent_difference - co2_percent_difference > 0:
+        print("Slow progress is better than no progress")
+
 
 #compare_most_produced() - Will Bakey
 #Purpose: Compares the most produced car for a given year to the most efficient car
@@ -197,7 +202,11 @@ def compare_most_produced():
     display(most_produced_vehicle)
     print("\nThe most efficient vehicle of {}:".format(year))
     display(most_efficient_vehicle)
-
+    if most_produced_vehicle == most_efficient_vehicle:
+        print("\nThe most efficient vehicle was the most produced vehicle in {}!".format(year))
+        print("This is a great result for protecting the environment!")
+    else:
+        print("\nPeople should probably have invested in a more efficient vehicle...")
 
 if __name__ == '__main__':
     main_menu()
