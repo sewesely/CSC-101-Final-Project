@@ -103,7 +103,7 @@ def show_avg_co2_for_year():
 
 
 
-#show_high_efficiency_cars
+#show_high_efficiency_cars() - Sebastian Wesley
 #Purpose: using the user's provided minimum MPG, finds and prints the entries that meet that requirement
 #Input: None (Inputs collected from user within the function)
 #Output: None (Output is printed to the console)
@@ -140,7 +140,7 @@ def show_high_efficiency_cars():
 
 #show_vehicles_for_year() - Sebastian Wesley
 #Purpose: Using the year from the user, prints the vehicle's data of that year
-#Input: None (Inputs collected from user within the fucntion)
+#Input: None (Inputs collected from user within the function)
 #Output: None (Output is printed to the console)
 #How I'd complete as a computer?
     # Collect the year to use the user
