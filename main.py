@@ -195,7 +195,7 @@ def show_improvement():
 #How would I do this as a computer?
 #-
 def compare_most_produced():
-    year = input("What year would you like to see? (1975-Prelim. 2024): ")
+    year = input("What year would you like to see? (1975-2023): ")
     most_produced_vehicle = AutoFilter(AutoFilter(data, 'model_year', year),'vehicle_type', most_produced(year))
     most_efficient_vehicle = AutoFilter(AutoFilter(data,'model_year', year), 'vehicle_type', most_efficient(year))
     print("\nThe most produced vehicle of {}:".format(year))
