@@ -193,7 +193,10 @@ def show_improvement():
 #Input: None
 #Output: None
 #How would I do this as a computer?
-#-
+#-Use the most_produced function to find the most produced car, and most_efficient for most efficient car
+#-Display each of the vehicles
+#-If they are the same, print a positive message
+#-If different print a message about sustainability
 def compare_most_produced():
     year = input("What year would you like to see? (1975-2023): ")
     most_produced_vehicle = AutoFilter(AutoFilter(data, 'model_year', year),'vehicle_type', most_produced(year))
