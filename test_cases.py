@@ -2,7 +2,6 @@ import unittest
 from data_processing import load_auto_trends, AutoTrendEntry, get_data
 from functions import *
 data = load_auto_trends("AutomotiveTrendsData1975-2024(Prelim).csv")
-reduced_data = load_auto_trends("AutomotiveTrendsData1975-2024(Prelim).csv")[392:]  # Entries just for the year 2024
 data_no_all = get_data()
 
 class TestCases(unittest.TestCase):

@@ -204,9 +204,9 @@ def compare_most_produced():
     display(most_efficient_vehicle)
     if most_produced_vehicle == most_efficient_vehicle:
         print("\nThe most efficient vehicle was the most produced vehicle in {}!".format(year))
-        print("This is a great result for protecting the environment!")
+        print("People made good car-buying decisions this year!")
     else:
-        print("\nPeople should probably have invested in a more efficient vehicle...")
+        print("\nPeople should probably have invested in a more efficient vehicle to better protect the environment")
 
 if __name__ == '__main__':
     main_menu()
