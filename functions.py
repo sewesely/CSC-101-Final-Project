@@ -88,7 +88,7 @@ def avg_co2_by_year(data:list[data_processing.AutoTrendEntry], year:str)->float:
     # check if the element has the attributes "field" and is greater or equal to the float
     # if true then append to a new list
     # return the new list
-def GreaterEqualThan(data:list, field:str, min:str)->list[data_processing.AutoTrendEntry]:
+def GreaterEqualThan(data:list, field:str, min:int)->list[data_processing.AutoTrendEntry]:
     filtered_data = []
     for Auto in data:
         if getattr(Auto,field) >= min:

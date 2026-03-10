@@ -71,7 +71,7 @@ def load_auto_trends(filepath: str) -> list[AutoTrendEntry]:
             entries.append(convert_auto_entry(row)) # add the class of the row (function: dict -> class)
     return entries  # all the data, list[object]
 
-
+#get_data - Will Bakey
 #Returns a list of workable vehicle data for computation
 #Removes all entries for "All" vehicle types (since they would mess with averages when computing)
 def get_data():
