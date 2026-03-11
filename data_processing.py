@@ -11,7 +11,7 @@ from typing import Optional
     # https://realpython.com/python-data-classes/
 
 #-----------------------------------------------------------------------------------------------------------#
-#This is the definition of the Dataclass
+#This is the definition of the Dataclass - Sebastian Wesley
     # each element in "data" should be an object of this
     # use the class variables to find the data within the rows
 
@@ -32,7 +32,7 @@ class AutoTrendEntry:
     footprint_sqft: Optional[float]     # None if "-" (missing in some cells)
 
 
-#Cleaning the csv for the function
+#Cleaning the csv for the function - Sebastian Wesley
     #some of the cells in the csv don't have data and are noted as "-"
     #this function helps the convert_auto_enty() ignore those cells
     #this function takes a str as an input which represent a singular cell
@@ -41,7 +41,7 @@ def parse_numeric(value: str) -> Optional[float]:
     val = value.strip()
     return None if val == "-" or val == "" else float(val) # removes str types from number only data
 
-#converts the data of the row provided into 1 class
+#converts the data of the row provided into 1 class - Sebastian Wesley
     #this function takes a dict as an input which represent a singular row
 def convert_auto_entry(row: dict) -> AutoTrendEntry:
     return AutoTrendEntry(
@@ -61,6 +61,7 @@ def convert_auto_entry(row: dict) -> AutoTrendEntry:
     )
 
 import csv
+#load_auto_trends() - Sebastian Wesley
 #splits the csv into rows and passes each row to convert_auto_entry() and convert the row to a class
 #return a list of objects, each object represents a row in the csv
 def load_auto_trends(filepath: str) -> list[AutoTrendEntry]:
